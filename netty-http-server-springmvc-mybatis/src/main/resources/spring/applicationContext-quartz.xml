@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- 定时任务 -->
+	<bean id="quartzFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+<!-- 				<ref bean="initSaleRankTrigger" />
+				<ref bean="latestResourceTrigger" />
+				<ref bean="autoResourceGivebackTrigger" />
+				<ref bean="resourceGivebackNotificationTrigger" />
+				<ref bean="borrowResourceTrigger" />
+				<ref bean="messageSendTrigger" />
+				<ref bean="requestRightsDataUpTrigger" />
+				<ref bean="syncRightsPrinterDataUpTrigger" /> -->
+				<ref bean="marketingCategoryTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SaleRankTimer" class="com.apabi.shop.timer.SaleRankTimer" />
+
+	<bean id="saleRankJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="SaleRankTimer" />
+		<property name="targetMethod" value="run" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="initSaleRankTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="saleRankJobDetail" />
+		<property name="cronExpression">
+			<value>${sale.rank.time}</value>
+		</property>
+	</bean>
+</beans>

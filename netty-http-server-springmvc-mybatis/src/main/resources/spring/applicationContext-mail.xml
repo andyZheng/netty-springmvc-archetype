@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	   default-autowire="byName" default-lazy-init="false">
+	<!-- SET default mail properties -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.host}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+		<property name="defaultEncoding" value="${mail.defaultEncoding}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+				<prop key="mail.smtp.port">${mail.smtp.port}</prop>
+				<!--				<prop key="mail.smtp.starttls.enable">true</prop>
+								<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+								<prop key="mail.smtp.socketFactory.port">${mail.smtp.port}</prop>
+								<prop key="mail.smtp.socketFactory.fallback">false</prop>-->
+			</props>
+		</property>
+	</bean>
+
+	<!--Email task pools -->
+	<bean id="emailTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5"/>
+		<property name="maxPoolSize" value="20"/>
+	</bean>
+
+	<!-- FreeMarker configure -->
+	<bean id="freeMarkerConfigure" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+		<property name="templateLoaderPath" value="classpath:/template"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+</beans>

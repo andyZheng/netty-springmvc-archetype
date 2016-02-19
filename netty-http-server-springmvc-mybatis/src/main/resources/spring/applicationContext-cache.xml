@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:jms="http://www.springframework.org/schema/jms"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd ">
+ 
+	<!-- 启用注解配置 -->
+	<context:annotation-config />
+	
+	<!-- 自动扫描注解组件Bean -->
+	<context:component-scan base-package="com.**.redis"/>
+	
+	<!-- 加载系统全局配置文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- Redis java客户端对象池配置 -->
+	<bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		  <!-- 说明一个pool可以有多少个Jedis实例 -->
+		  <property name="maxActive" value="10" />
+		  <!-- 最大Idle-->
+		  <property name="maxIdle" value="5" />
+		  <!-- 最小Idle -->
+		  <property name="minIdle" value="1" />
+		  <!-- 获得一个jedis实例的时候是否检查连接可用性（ping()） -->
+		  <property name="testOnBorrow" value="true" />
+		  <!-- return 一个jedis实例给pool时，是否检查连接可用性（ping()） -->
+		  <property name="testOnReturn" value="true" />
+		  <!-- idle状态监测用异步线程evict进行检查， -->
+		  <property name="testWhileIdle" value="true" />
+		  <!-- 一次最多evict的pool里的jedis实例个数 -->
+		  <property name="numTestsPerEvictionRun" value="5" />
+		  <!-- test idle 线程的时间间隔 -->
+		  <property name="timeBetweenEvictionRunsMillis" value="1800000" />
+		  <!-- 最大等待wait时间-->
+		  <property name="maxWait" value="3000" />
+		  <!-- WHEN_EXHAUSTED_FAIL = 0; 直接抛出异常throw new NoSuchElementException("Pool exhausted"); -->
+		  <!-- WHEN_EXHAUSTED_BLOCK = 1; borrowObject()将会阻塞，直到有可用新的或者空闲的object为止，或者如果配置了maxWait，如果请求阻塞超时，将抛出NoSuchElementException.如果maxWait为负数，请求将会无限制的阻塞下去，默认配置。 -->
+		  <!-- WHEN_EXHAUSTED_GROW = 2; borrowObject()将会继续创建新的对象，并返回，因此，pool维护的对像数将超出maxActive -->
+		  <property name="whenExhaustedAction" value="1" />
+	</bean>
+	
+	<!-- Redis java客户端对象池 -->
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0" ref="redisPoolConfig"/>
+		<constructor-arg index="1" value="${redis.host}"/>
+		<constructor-arg index="2"  value="${redis.port}"/>
+	</bean>
+</beans>

@@ -1,0 +1,222 @@
+/****************tree**************/
+.leftturn {
+	padding-left: 20px;
+}
+
+.treepat li {
+	float: none;
+}
+
+.treepat li img {
+	vertical-align: middle
+}
+
+.treepat li span {
+	cursor: hand;
+}
+
+/****************�������table01**************/
+.reslist {
+	border: 1px solid #dce9f0;
+}
+
+.reslist tr {
+	border: 1px solid #dce9f0;
+}
+
+.reslist td {
+	color: #67879b;
+	padding-left: 15px;
+	height: 24px;
+	padding: 1px;
+}
+
+.reslist .head {
+	width: 100%;
+	height: 24px;
+	background: #e5eef5;
+	line-height: 24px;
+	color: #0a4366;
+	font-weight: bold;
+}
+
+.reslist .ids {
+	line-height: 24px;
+}
+
+.reslist .hover {
+	background-color: #ddffdd;
+}
+
+.reslist .selected {
+	background-color: #ddffdd;
+}
+
+/***************��ҳtable**************/
+.tptab {
+	margin-top: 5px;
+	border: 1px solid #dce9f0;
+	background: #eaf1f5;
+	color: #0a4366;
+    width: 100%;
+    
+}
+
+.tptab img {
+	border: 0px;
+}
+
+.tptab a:link,.tptab a:visited,.tptab a:hover,.tptab a:active {
+	color: black;
+	font-size: 12px;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+/***************�?table**************/
+.formTable {
+	border: 1px;
+	width:100%;
+}
+
+/* formTable */
+.formTable {
+	border-collapse:collapse;
+	width:100%;
+	margin:0px; 
+}
+
+.formTable .tdLabel{   
+	border:1px solid #CCC;
+	height: 25px;
+	width: 150px;
+	font-weight:bold;
+	vertical-align: top;
+	text-align: right;
+}
+
+.formTable span.required{   
+	color:red;
+	font-weight:bold;
+}
+
+.formFieldSet {
+	margin: 10px;
+	color: #0a4366;
+}
+
+.formLegend {
+	color: #0a4366;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+.formTable td {
+	padding-left: 15px;
+	height: 24px;
+	padding: 1px;
+	border:1px solid #CCC;
+	text-align: left;
+}
+
+.formTable .head {
+	width: 100%;
+	height: 24px;
+	background: #e5eef5;
+	line-height: 24px;
+	color: #0a4366;
+	font-weight: bold;
+}
+
+.formTable .field {
+	font-weight: bold;
+	padding-right: 30px;
+	width: 150px;
+	text-align: right;
+}
+
+.formTable .finput {
+	width: 150px;
+}
+.wdatePicker {
+    background: url("datePicker.gif") no-repeat scroll right center #FFFFFF;
+    border: 1px solid #999999;
+    height: 20px;
+}
+
+.formTable select {
+}
+	
+.formTable textarea {
+	overflow-y: auto;
+}
+
+.btn {
+	height: 20px;
+	border: #AAAAAA 1px solid;
+	cursor: pointer;
+	font-size: 12px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,
+		StartColorStr=#ffffff, EndColorStr=#C3DAF5 );
+    background-image: url("../images/T1vB04XeFlXXXXXXXX-1-90.png");
+    background-position: 0 -60px;
+    background-repeat: repeat-x;
+    color: #404040;
+    cursor: pointer;
+    display: inline-block;
+    font: 100 12px/14px simsun,sans-serif;
+    height: 23px;
+    margin: 1px;
+    padding: 1px 5px;
+}
+
+.grid .btn_mouseout { 
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid 
+} 
+.grid .btn_mouseover { 
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#D7E7FA); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid 
+} 
+.grid .btn_mousedown 
+{ 
+BORDER-RIGHT: #FFE400 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #FFE400 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #FFE400 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #FFE400 1px solid 
+} 
+.grid .btn_mouseup { 
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid 
+}
+
+.grid .asc {
+	background-image: url(../images/up-arrow.jpg);
+	background-repeat: no-repeat;
+}
+
+.grid .desc {
+	background-image:  url(../images/down-arrow.jpg) ;
+	background-repeat: no-repeat;
+}
+
+.tableBody .break {
+	word-break: break-all;
+	width: 120px;
+	overflow: hidden;
+}
+
+.tableBody .subname {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.gridTable2 {
+	table-layout: fixed;
+	word-break: break-all
+}
+.center {
+ text-align: center	
+	
+}
+
+.formTable .content{
+	padding-left: 20px
+	
+	
+}

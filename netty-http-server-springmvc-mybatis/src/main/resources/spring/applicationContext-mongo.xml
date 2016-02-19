@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 修改说明: 请修改方言Dialect以适应不同的数据库分页 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	default-autowire="byName" default-lazy-init="false"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.4.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- component-scan自动搜索@Component , @Controller , @Service , @Repository等标注的类 -->
+	<context:component-scan base-package="com.**.dao" />
+
+	<!-- MongoDB数据库相关配置 -->
+	<!-- <mongo:mongo id="replicaSetMongo" replica-set="127.0.0.1:27017,localhost:27018"> -->
+	<mongo:mongo host="${db.mongo.host}" port="${db.mongo.port}">
+		<!-- connections-per-host 每台主机允许的并发连接数，默认为10
+			 threads-allowed-to-block-for-connection-multiplier 每台主机允许的最大并发线程数 默认为5
+			 connect-timeout 连接超时时间 默认为0
+			 max-wait-time 阻塞线程最大等待时间 默认为12000ms(2min)
+			 auto-connect-retry 失败是否自动重接 默认为 false
+			 socket-keep-alive 是否保持socket连接 默认为false
+			 socket-timeout socket超时时间 默认为0-永不超时
+			 slave-ok 是否允许读取从库数据 默认为false
+		 -->
+		<mongo:options	connections-per-host="${db.mongo.connectionsPerHost}" 
+					    threads-allowed-to-block-for-connection-multiplier="${db.mongo.threadsAllowedToBlockForConnectionMultiplier}"
+					    socket-keep-alive="true" />
+	</mongo:mongo>
+	
+	<!-- MongoDB数据库工厂 -->
+	<mongo:db-factory id="mongoDBFactory" dbname="${db.mongo.dbname}" username="${db.mongo.username}" password="${db.mongo.password}" mongo-ref="mongo"/>
+	
+	<!-- MongoDB模板 -->
+	<mongo:template id="mongoTemplate" db-factory-ref="mongoDBFactory"/>
+</beans>

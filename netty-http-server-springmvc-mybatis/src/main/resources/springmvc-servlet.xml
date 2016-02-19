@@ -1,0 +1,79 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	default-autowire="byName">
+
+	<!-- Auto scan @Controller -->
+	<context:component-scan base-package="com.**.controller" />
+
+	<mvc:annotation-driven>
+		<mvc:async-support default-timeout="10" task-executor="asyncTaskExecutor">
+			<mvc:callable-interceptors>
+				<bean class="com.soho.framework.server.servlet.async.AsyncInterceptor" />
+			</mvc:callable-interceptors>
+		</mvc:async-support>
+	</mvc:annotation-driven>
+
+	<bean id="asyncTaskExecutor" class="com.soho.framework.server.servlet.async.ThreadLocalAsyncExecutor" />
+
+	<!-- MVC auto annotation driver -->
+	<mvc:annotation-driven />
+
+	<!-- Filter static resource -->
+	<mvc:default-servlet-handler />
+
+	<!-- Session timeout Handler -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/*" />
+			<mvc:exclude-mapping path="/*/*.*" />
+			<mvc:exclude-mapping path="/*/entry" />
+			<mvc:exclude-mapping path="/*/login" />
+			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/user/forgotPassword" />
+			<mvc:exclude-mapping path="/user/resetPassword" />
+			<mvc:exclude-mapping path="/candidate/register" />
+			<mvc:exclude-mapping path="/candidate/save" />
+			<mvc:exclude-mapping path="/candidate/candidateQuickUpload" />
+			<mvc:exclude-mapping path="/candidate/uploadPhoto" />
+			<bean class="com.platform.common.web.SessionTimeoutInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- Default View Parser -->
+	<bean id="defaultViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+		<property name="contentType" value="text/html" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Uploader parser -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="3145728" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="net/tangs.three6five/main/shared/Messages" />
+
+	<!-- Mapping exception to the handler view -->
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error/error" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="net.tangs.three6five.web.Result">error/result</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

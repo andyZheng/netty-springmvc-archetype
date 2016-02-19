@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:jms="http://www.springframework.org/schema/jms"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd ">
+ 
+	<!-- 启用注解配置 -->
+	<context:annotation-config />
+	
+	<!-- 自动扫描注解组件Bean -->
+	<context:component-scan base-package="com.**.jms"/>
+	
+	<!-- 加载系统全局配置文件 -->
+	<context:property-placeholder location="classpath:jms.properties"/>
+	
+	<!-- ActiveMQ连接工厂 -->
+	<bean id="AMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.url}"/>
+		<property name="userName" value="${jms.username}"/>
+		<property name="password" value="${jms.password}"/>
+		<!-- 是否异步发送消息 -->
+		<property name="useAsyncSend" value="true"/>
+		<!-- 是否自动确认 -->
+		<property name="optimizeAcknowledge" value="true"/>
+	</bean>
+	
+	<!-- JMS连接缓存工厂 -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+	    <constructor-arg ref="AMQConnectionFactory" />
+	    <property name="exceptionListener" ref="jmsExceptionListener" />
+	    <property name="sessionCacheSize" value="1000" />
+	</bean>
+	
+	<!-- JMS模板 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+	   <constructor-arg ref="connectionFactory"/>
+	   <property name="defaultDestinationName" value="${game.log.destination}"/>
+	   <!-- pubSubDomain 设置订阅默认 默认为队列 -->
+	   <property name="pubSubDomain" value="false"/>
+	</bean>
+	
+	<!-- 消息监听器  -->
+    <jms:listener-container concurrency="${jms.consumer.concurrency.number}">
+		<!-- 游戏日志消息监听器 -->
+	    <jms:listener id="gameLogMessageListener" destination="${game.log.destination}" ref="messageConsumer"  />
+	</jms:listener-container>
+</beans>

@@ -1,0 +1,26 @@
+body{margin:0;padding:0;font-size:12px;font-family:ËÎÌו;line-height:180%; background:url(../images/hy_bg01.gif) repeat-x top #fafbfd;}
+*{margin:0;padding:0;}
+a{text-decoration:none;color:#00274e}
+a:hover,a:active{text-decoration:underline;}
+li{ float:none; list-style:none;}
+
+#pageLogin
+{ width:940px; height:143px; margin:0 auto; padding:320px 0 0 0; background:url(../images/hy_bg02.gif) no-repeat;}
+#pageLogin .userinfo
+{ width:350px; margin:0 auto;}
+
+#pageLogin .usertext
+{ width:196px; float:left;color:#00274e}
+#pageLogin .usertext .inputname
+{ width:124px; border:1px solid #b5ccda}
+
+#pageLogin .loginbtn
+{ width:71px;float:left; border-right:1px dotted #b5ccda }
+#pageLogin .loginbtn .btnsty01
+{ width:46px; height:41px; background:url(../images/hy_btn01.gif) no-repeat; border:0; color:#fefefe; font-weight:bold;}
+
+#pageLogin .otherlog
+{ float:left;}
+#pageLogin .otherlog li
+{ background:url(../images/hy_ar01.gif) no-repeat 18px 6px; padding: 0 0 0 30px;}
+

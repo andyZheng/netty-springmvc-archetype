@@ -1,0 +1,101 @@
+﻿/**********normal***************/
+* {
+	margin-bottom: 0;
+    margin-right: 1;
+    margin-left: 1;
+    margin-top: 0;
+    padding: 0;
+}
+body{
+	font-size: 12px;
+	background:#ffffff;
+	margin:0;
+	font-family:"宋体";
+}
+body.headbody
+{
+	background:url(../images/normal_bg.gif) repeat-x #bfd3de;
+}
+a
+{
+	text-decoration:none;
+	color:#67879b;
+}
+a:hover,a:active
+{
+	text-decoration:underline;
+}
+
+
+/*************文字链接*********/
+a.txtlk01{ color:#67879b;}
+a.txtlk01:hover,a.txtlk01:active
+{color:#0a4366; text-decoration:underline}
+.treepat li a{ color:#023051; font-size:12px;}
+.treepat li a:hover,.treepat li a:active{text-decoration:none;}
+
+/*************字体*********/
+span.blue1
+{ color:#00a1fe}
+span.blue2
+{color:#01304e; font-weight:bold; font-size:12px;}
+input,select
+{font-size:12px;}
+
+/*************空白*********/
+li.blank01
+{ width:15px;}
+
+/*************提交button*********/
+
+input.searchbtn01
+{width:58px; height:17px; background:url(../images/index_016.gif) no-repeat; border:0;color:#ffffff; line-height:17px; }
+input.subbtn
+{ width:65px; height:19px; background:url(../images/index_019.gif) no-repeat; border:0; color:#0a4366;line-height:19px;}
+input.btbjbtn
+{ width:47px; background:url(../images/index_020.gif) no-repeat; border:0; line-height:17px;color:#0a4366;}
+input.btbjbtn2
+{ width:65px; background:url(../images/index_025.gif) no-repeat; border:0; line-height:17px;color:#0a4366;}
+
+/*************下拉菜单*********/
+.ddlsty1
+{ width:134px; height:20px; }
+.ddlsty2
+{ width:260px; margin-top:11px; height:18px; font-size:11px;}
+.ddlsty3
+{ width:134px; height:18px; font-size:10px;}
+.ddlsty4
+{ width:41px; height:18px;font-size:11px;}
+.ddlsty5
+{ width:134px; height:20px;}
+#mainBd3 table{
+	 margin-left: 1;
+	  margin-right: 1;
+}
+
+/**************上传控件样式*******************/
+.pop-box {
+	z-index: 9999; /*这个数值要足够大，才能够显示在最上层*/
+	margin-bottom: 3px;
+	display: none;
+	position: absolute;
+	background: #FFF;
+	border: solid 1px #6e8bde;
+}
+
+.pop-box h4 {
+	cursor: default;
+	height: 18px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	background: none repeat scroll 0 0 #E5EEF5;
+}
+
+.pop-box-body {
+	clear: both;
+	padding: 2px;
+}

@@ -1,0 +1,156 @@
+body {
+	font-size: 12pt;
+	margin: 0;
+	padding: 0;
+}
+
+/* link color */
+a,a:link {color: #006699; text-decoration:none;}
+a:visited {color: #006699;text-decoration:none;}
+a:hover {color: #bc2931; text-decoration:underline;}
+a:active {color: #bc2931;}
+
+/* for button: <input type=submit class=stdButton /> */
+.stdButton {
+	background-color:buttonface;
+	border:1px solid #CCCCCC;
+	cursor:pointer;
+	font-family:Verdana;
+	font-size:9pt;
+	height:22px;
+}
+
+/* END formTable */
+
+/* queryPanel for list.jsp */
+.queryPanel .tdLabel{   
+	vertical-align: top;
+	text-align: right;
+}
+
+/* Messages */
+div.error, div.message {
+	width: 60%;
+	border: 1px solid black;
+	padding: 4px;
+    background: #ccffcc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin: 10px auto;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+div.error {
+	border: 2px solid red;
+}
+/* END Messages */
+
+/*  true  */
+.x-ebiz-msg {
+	z-index: 9999;
+	width: 200px;
+	height: 75px;
+	right: 500px;
+    top: 150px;
+	position:fixed;
+	overflow: hidden;
+}
+.ebiz-box-top{
+	background: url("../images/message/msg_bg.png") no-repeat 0 0;
+	overflow: hidden;
+	width:200px;
+	height:10px;
+}
+
+.ebiz-box-ml {
+    background: url("../images/message/l.png") repeat-y 0px top;
+    overflow: hidden;
+    padding-left: 4px;
+}
+
+.ebiz-box-mr {
+	  background: url("../images/message/r.png") repeat-y right top;
+    overflow: hidden;
+    padding-right: 4px;
+}
+
+.ebiz-msg .ebiz-box-mc {
+    font-size: 14px;
+}
+.ebiz-box-mc {    
+    background:#D8F3BF url("../images/message/tb.png") repeat-x left -7px ;
+    /*color: #393939;*/
+    color:#4f8d33;
+    font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+    font-size: 12px;
+    padding: 15px 10px;
+	word-break:break-all;
+	min-height:24px;
+	_height:24px;
+	text-align:center;
+}
+
+.ebiz-box-mc h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+.ebiz-box-mc p{
+	text-align:left;
+	margin:5px 0;
+	line-height:20px;
+}
+
+
+.ebiz-box-bottom {
+	background: url("../images/message/msg_bg.png") no-repeat 0 -58px;
+	overflow: hidden;
+	width:200px;
+	height:10px;
+}
+
+
+/*  wrong  */
+
+.x-ebiz-err .ebiz-box-top{
+	background: url("../images/message/msg_bg.png") no-repeat 0 -70px;
+	overflow: hidden;
+	width:199px;
+	height:10px;
+}
+
+.x-ebiz-err .ebiz-box-ml {
+    background: url("../images/message/nl.png") repeat-y left top;
+    overflow: hidden;
+    padding-left: 4px;
+}
+
+.x-ebiz-err .ebiz-box-mr {
+	  background: url("../images/message/nr.png") repeat-y right top;
+    overflow: hidden;
+    padding-right: 4px;
+}
+
+.x-ebiz-err .ebiz-msg .ebiz-box-mc {
+    font-size: 14px;
+}
+.x-ebiz-err .ebiz-box-mc {    
+    background:#F3BFC0 url("../images/message/ntb.png") repeat-x left -7px;
+    color:#bb202b;
+}
+
+.x-ebiz-err .ebiz-box-mc h3 {
+	margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.x-ebiz-err .ebiz-box-bottom {
+	background: url("../images/message/msg_bg.png") no-repeat 0 -130px;
+	overflow: hidden;
+	width:200px;
+	height:10px;
+}
+

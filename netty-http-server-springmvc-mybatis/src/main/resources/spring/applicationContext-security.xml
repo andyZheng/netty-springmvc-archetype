@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:s="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd" default-autowire="byName" default-lazy-init="true">
+
+	<description>SpringSecurity安全配置</description>
+
+	<!-- http安全配置 -->
+	<s:http access-denied-page="/admin/fault.jsp" entry-point-ref="authenticationProcessingFilterEntryPoint">
+	<!-- 前台管理权限配置 -->
+		<!-- 前台公共权限配置 -->
+		<s:intercept-url pattern="/marketingCategory/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resclickrank/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/salerank/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resborrowrank/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/newinsertdigitres/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/newinsertdigitres/dlibtop.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/recommend/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/bulletin/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/news/top.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<!-- 书店前台权限配置 -->
+		<s:intercept-url pattern="/bookstore/save.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/cancelSuccessDetailOrder.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/myorder.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/order.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/myorderinfo.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/userinfocreate.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/userinfoedit.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/uuserinfoshow.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/payed.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/alipaytoAgain.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/deleteofarray.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/bookstore/settlement.do" access="ROLE_普通用户" />
+		
+		<s:intercept-url pattern="/bookstore/*.do" access="ROLE_普通用户,ROLE_ANONYMOUS" /> 
+
+		<!-- 数图前台权限配置 -->
+		<s:intercept-url pattern="/library/settlement.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/library/borrow.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/library/borrowBook.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/reader/downloadBorrow.do" access="ROLE_普通用户" />
+		
+		<s:intercept-url pattern="/library/*.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		
+		<!-- 前台其他权限配置 -->
+		<s:intercept-url pattern="/searchresource/*.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/alipay/*.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/purchase/viewcart.do" access="ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/edit.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/create.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/delete.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/deviceinfo/save.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/user/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/user/edit.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/user/save.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/userlogininfo/edit.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/userrateinfo/edit.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/listbyuser.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/downResource.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/fillPage.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/statbyuser.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/purchase/pay.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/purchase/delete.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/purchase/ajaxCheckcCartIsFull.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/metadata/show.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/purchase/addgoodstocart.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/purchase/deletegoodstocart.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderprint/print.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderprint/save.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/cancelSuccessDetailOrder.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/orderinfo/oldorder.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户" />
+		<s:intercept-url pattern="/categorydetail/getChildrenCategory.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/journal/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/journal/pushJournal.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/periodicaldownloadinfo/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/periodicalorder/create.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/recommend/list_recomm_show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resborrowrank/list_brank_show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/salerank/list_srank_show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resclickrank/list_crank_show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/newinsertdigitres/list_for_show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/digitresource/show_elec_resdetail.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/fulltextsearch/*.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/statbyuser.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/alipay/payed.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/alipay/alipaytoAgain.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/digitresourceborrowing/*.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/link/linktop.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/siteconfig/sitebotton.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/news/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/news/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/link/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/link/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/link/sort.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/bulletin/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/bulletin/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/webinfo/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/siteconfig/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/sitehelp/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/imageplayer/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/imageplayer/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/imageplayer/showImage.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/imageplayer/sort.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/sitebottom/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/sitebottom/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/sitebottom/sort.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/linkcategory/list.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/linkcategory/show.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/metadata/searchmetadata.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+
+		
+	<!-- 系统接口权限配置-->
+		<s:intercept-url pattern="/resource/down.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resource/delete.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/user/mobileDevLogin.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/user/mobileDevLogout.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/resource/syncCallBack.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/reader/*.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/purchase/getCEFxmlFromRights.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/demonstration/input.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/exportXML.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/dowloadFillPage.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/demonstration/retrieOrderNo.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/cancelOrderByHMInterface.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/orderinfo/cancelOrderByHM.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/opds/generate.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/user/signin.do" access="ROLE_普通用户,ROLE_ANONYMOUS" />	
+		<s:intercept-url pattern="/watermarkinfo/queryByHashInfo.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+		<s:intercept-url pattern="/watermarkinfo/addInfo.do" access="ROLE_超级管理员,ROLE_系统管理员,ROLE_普通用户,ROLE_ANONYMOUS" />
+
+	<!-- 后台管理权限配置 -->
+	
+	
+		<s:intercept-url pattern="/user/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/usergroup/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/sysuser/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/permission/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/userpermission/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/usergrouppermission/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/configuration/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/wordcensor/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/digitresgroup/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/keyword/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/indexdb/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/rate/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/countbysaler/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/resourcestatistics/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/orderinfo/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/order/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/log/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/digitresource/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/metatype/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/categorytype/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/marketingcategory/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/marketingcategoryztf/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/newinsertdigitres/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/salerank/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/recommend/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/resborrowrank/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/resclickrank/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/sampleusergroup/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/sampleuserinfo/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/sampleorder/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/sampleorderdownload/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/ink/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/papertype/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/bindingmethod/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/delivery/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/podorderinfoex/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/digitresourcedownload/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/digitresourceonlinereader/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/metadata/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/journal/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/periodicaldownloadinfo/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/shop/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/shop/searchresorce/categorysearch.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+		<s:intercept-url pattern="/*.do" access="ROLE_超级管理员" />
+		<s:intercept-url pattern="/*/*.do" access="ROLE_超级管理员,ROLE_系统管理员" />
+
+		<!-- 限制同一帐号登录次数 <s:session-management> <s:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/> </s:session-management> -->
+		<s:logout logout-success-url="/admin/login.jsp" />
+		<s:remember-me />
+		<!-- <s:anonymous/> -->
+		<s:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationProcessingFilter" />
+	</s:http>
+
+	<bean id="authenticationProcessingFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+		<property name="authenticationDetailsSource" ref="authenticationDetailsSource" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="filterProcessesUrl" value="/j_spring_security_check" />
+		<property name="authenticationSuccessHandler" ref="authenticationSuccessHandler" />
+		<property name="authenticationFailureHandler" ref="authenticationFailureHandler" />
+	</bean>
+
+	<bean id="authenticationSuccessHandler" class="com.apabi.shop.service.security.MultiSimpleUrlAuthenticationSuccessHandler">
+		<property name="defaultTargetUrl" value="/admin/index.jsp" />
+	</bean>
+
+	<bean id="authenticationFailureHandler" class="com.apabi.shop.service.security.MultiSimpleUrlAuthenticationFailureHandler">
+		<property name="defaultFailureUrl" value="/admin/login.jsp?error=1" />
+	</bean>
+
+	<bean id="authenticationDetailsSource" class="javacommon.security.springsecurity.CustomWebAuthenticationDetailsSource" />
+
+	<bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<property name="loginFormUrl" value="/admin/login.jsp" />
+		<property name="forceHttps" value="false" />
+	</bean>
+
+	<!-- 认证配置, 使用userDetailsService提供的用户信息 -->
+	<s:authentication-manager alias="authenticationManager">
+		<s:authentication-provider ref="authenticationProvider" />
+	</s:authentication-manager>
+
+	<bean id="userDetailsService" class="com.apabi.shop.service.security.UserDetailServiceImpl" />
+
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<bean id="authenticationProvider" class="com.apabi.shop.service.security.MyAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+	</bean>
+</beans>
