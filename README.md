@@ -1,2 +1,2 @@
 #netty-springmvc-archetype
-Netty服务器与SpringMVC无缝对接框架！
+Netty服务器与SpringMVC无缝集成框架！
