@@ -42,7 +42,7 @@
 		<sourceEncoding>UTF-8</sourceEncoding>
 
 		<!-- Netty version configuration -->
-		<netty.version>4.1.0.Beta3</netty.version>
+		<netty.version>4.1.42.Final</netty.version>
 
 		<!-- Spring version configurations -->
 		<spring.version>4.1.6.RELEASE</spring.version>
