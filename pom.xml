@@ -50,7 +50,7 @@
 
 		<!-- Ibatis configurations -->
 		<ibatis.version>2.3.4.726</ibatis.version>
-		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybatis.spring.version>1.2.2</mybatis.spring.version>
 
 		<!-- Apache library configurations -->
