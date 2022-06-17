@@ -70,7 +70,7 @@
 		<druid.version>1.0.13</druid.version>
 
 		<jackson.version>2.4.0</jackson.version>
-		<fastjson.version>1.1.39</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 	</properties>
 
 	<dependencyManagement>
