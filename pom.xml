@@ -46,7 +46,7 @@
 
 		<!-- Spring version configurations -->
 		<spring.version>4.1.6.RELEASE</spring.version>
-		<spring.mongodb.version>1.7.1.RELEASE</spring.mongodb.version>
+		<spring.mongodb.version>3.3.5</spring.mongodb.version>
 
 		<!-- Ibatis configurations -->
 		<ibatis.version>2.3.4.726</ibatis.version>
