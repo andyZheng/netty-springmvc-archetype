@@ -55,7 +55,7 @@
 
 		<!-- Apache library configurations -->
 		<apache.solr.version>4.2.0</apache.solr.version>
-		<apache.poi.version>3.6</apache.poi.version>
+		<apache.poi.version>4.1.1</apache.poi.version>
 		<apache.activemq.version>5.9.0</apache.activemq.version>
 
 		<!-- Common configurations -->
